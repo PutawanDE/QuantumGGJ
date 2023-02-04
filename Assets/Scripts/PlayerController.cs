@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         jumpPress = Input.GetButton("Jump");
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetKey("e"))
         {
             character.StartAttack();
 

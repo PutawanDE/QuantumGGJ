@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
     private float attackRange = 0.2f;
     
     private enum AIState {
-        idle, run, attack
+        idle, run, attack, backoff
     }
     
     private AIState currState = AIState.idle;
@@ -24,38 +24,62 @@ public class EnemyController : MonoBehaviour
             Debug.LogError("Something wrong");
     }
 
-    void FixedUpdate()
+    private bool ShouldBackOff() {
+        return Random.value < 0.5f;
+    }
+
+    void Update()
     {
         if (!target)
         {
             target = GameObject.FindGameObjectWithTag("Player").transform;
-        }
+        }       
 
-        distanceToTarget = Mathf.Abs(((Vector2) target.position - (Vector2) transform.position).x);
-        Debug.Log(distanceToTarget);    
-        Debug.Log(currState);    
+        distanceToTarget = Vector2.Distance(target.position, transform.position);
         
+        Debug.Log(currState);
+    
         switch (currState)
         {
             case AIState.idle:
+            {
                 if (distanceToTarget > attackRange) 
                     currState = AIState.run;
+                else if (Input.GetKeyDown("e") && ShouldBackOff()) {
+                    currState = AIState.backoff;
+                }
                 else {
                     currState = AIState.attack;
                 }
                 break;
+            }
             case AIState.run:
+            {
                 Vector2 direction = (Vector2) target.position - (Vector2) transform.position;
                 character.Move(Mathf.Clamp(direction.x, -0.1f, 0.1f));
 
                 if (distanceToTarget <= attackRange)
                     currState = AIState.attack;
                 break;
-            case AIState.attack:
+            }
+            case AIState.attack: 
+            {
                 character.Move(0);
                 character.StartAttack();
                 currState = AIState.idle;
                 break;
+            }
+            case AIState.backoff:
+            {
+                if (distanceToTarget > attackRange * 5){
+                    character.Jump();
+                    currState = AIState.idle;
+                }
+
+                Vector2 direction = (Vector2) target.position - (Vector2) transform.position;
+                character.Move(Mathf.Clamp(-direction.x, -0.3f, 0.3f));
+                break;
+            }
         };
     }
 }
