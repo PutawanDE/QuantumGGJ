@@ -17094,7 +17094,7 @@ GameObject:
   - component: {fileID: 1123656084}
   - component: {fileID: 1123656085}
   m_Layer: 0
-  m_Name: Swordmaiden
+  m_Name: Sword Maiden
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17380,7 +17380,7 @@ GameObject:
   - component: {fileID: 1312993852}
   - component: {fileID: 1312993853}
   m_Layer: 5
-  m_Name: HP bar (2)
+  m_Name: 'Boss HP bar '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36798,8 +36798,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1835441017}
   - component: {fileID: 1835441018}
+  - component: {fileID: 1835441019}
   m_Layer: 5
-  m_Name: HP bar
+  m_Name: Player HP bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36880,6 +36881,21 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1835441019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835441016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a835fe09dd95b54aa01609362d11441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPSlider: {fileID: 1835441018}
+  nameTextMesh: {fileID: 1085096648}
+  character: {fileID: 1123656085}
 --- !u!1 &1847683307
 GameObject:
   m_ObjectHideFlags: 0
