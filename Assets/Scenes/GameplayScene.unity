@@ -13263,13 +13263,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characters:
   - {fileID: 3205724985710004316, guid: 3114a8327bddfd74198605b0ad79c1a5, type: 3}
-  - {fileID: 1728946156252682408, guid: 004667652cf1b6a4d99941d3a15acde8, type: 3}
+  - {fileID: 3205724985710004316, guid: a008117a2a7c187469767e05c97b45f2, type: 3}
   playerSpawnPoint: {x: 2, y: 0}
   enemySpawnPoint: {x: -2, y: 0}
   cam: {fileID: 738365029}
   scoreboard: {fileID: 11400000, guid: 1cf9b2f963fc99a4ab70803f58716790, type: 2}
-  player: {fileID: 0}
-  enemy: {fileID: 0}
+  player: {fileID: 7849633476925129770, guid: 8a4dd89ab3d07a2438e8e6d40a7bb44e, type: 3}
+  enemy: {fileID: 7509233037982926612, guid: 4d1a0f644a098d343a5407bfe390c070, type: 3}
 --- !u!4 &337142335
 Transform:
   m_ObjectHideFlags: 0
