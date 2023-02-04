@@ -194,9 +194,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26dfc50c53d12ad42bae4c84f45d00c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckRadius: 0
   walkSpeed: 10
   jumpForce: 2.5
-  attackRatePerSec: 1
   attackRange: 1
   attackDamage: 1
   hp: 100
@@ -352,7 +355,7 @@ GameObject:
   - component: {fileID: 113432689}
   - component: {fileID: 113432688}
   - component: {fileID: 113432690}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -28489,9 +28492,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b969cb8b19fcd479988d8ee14cb656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckRadius: 0
   walkSpeed: 2
   jumpForce: 3
-  attackRatePerSec: 1
   attackRange: 1
   attackDamage: 1
   hp: 100
