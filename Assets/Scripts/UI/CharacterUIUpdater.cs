@@ -28,6 +28,18 @@ public class CharacterUIUpdater : MonoBehaviour
         {
             if (nameTextMesh != null)
                 nameTextMesh.text = character.name;
+
+            if (HPSlider != null)
+            {
+                if (character.GetHP() <= 0)
+                    HPSlider.fillRect.gameObject.SetActive(false);
+                else
+                {
+                    HPSlider.value = character.GetHP() / character.GetMaxHP();
+                    HPSlider.fillRect.gameObject.SetActive(true);
+                }
+            }
+
         }
     }
 }

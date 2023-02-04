@@ -91,6 +91,16 @@ public class Character : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public  float GetHP()
+    {
+        return hp;
+    }
+
+    public float GetMaxHP()
+    {
+        return maxHp;
+    }
+
     private Ray2D CreateRay()
     {
         if (gameObject.tag == "Enemy")
