@@ -28497,7 +28497,7 @@ MonoBehaviour:
     m_Bits: 8
   groundCheckRadius: 0.5
   walkSpeed: 2
-  jumpForce: 3
+  jumpForce: 2
   attackRange: 1
   attackDamage: 1
   hp: 100
