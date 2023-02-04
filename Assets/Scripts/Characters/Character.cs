@@ -6,6 +6,9 @@ public class Character : MonoBehaviour
 {
     protected bool facingLeft;
 
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float groundCheckRadius;
+
     [SerializeField] protected float walkSpeed = 10.0f;
     [SerializeField] protected float jumpForce = 5f;
     [SerializeField] protected float attackRange = 1.0f;
@@ -53,13 +56,16 @@ public class Character : MonoBehaviour
             {
                 Destroy(enemyController);
             }
-            
+
             gameObject.AddComponent<PlayerController>();
         }
     }
 
     private void Update()
     {
+        CheckGround();
+        animator.SetBool("IsInAir?", !onGround);
+
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             if (!isAttacking)
@@ -186,20 +192,16 @@ public class Character : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void CheckGround()
     {
-        if (other.gameObject.tag == "Ground")
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, groundCheckRadius, groundLayer);
+
+        if (hit)
         {
-            animator.SetBool("IsInAir?", false);
             onGround = true;
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Ground")
+        else
         {
-            animator.SetBool("IsInAir?", true);
             onGround = false;
         }
     }
