@@ -8,7 +8,6 @@ public class Character : MonoBehaviour
 
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundCheckRadius;
-
     [SerializeField] protected float walkSpeed = 10.0f;
     [SerializeField] protected float jumpForce = 5f;
     [SerializeField] protected float attackRange = 1.0f;
@@ -237,6 +236,10 @@ public class Character : MonoBehaviour
     {
         facingLeft = false;
         transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+    
+    public float getAttackrange() {
+        return attackRange;
     }
 
 }
