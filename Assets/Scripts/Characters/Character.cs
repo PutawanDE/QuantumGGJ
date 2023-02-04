@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public float walkSpeed = 10.0f;
+    private Vector2 facingDirection;
+
+    [SerializeField] protected float walkSpeed = 10.0f;
+    [SerializeField] protected float jumpForce = 5f;
     [SerializeField] protected float attackRatePerSec = 1.0f;
     [SerializeField] protected float attackRange = 1.0f;
     [SerializeField] protected float attackDamage = 1.0f;
@@ -13,19 +16,29 @@ public class Character : MonoBehaviour
 
     [SerializeField] protected float raycastOffset;
 
+    private Rigidbody2D rb;
+
     private bool isAttacking = false;
+    private bool onGround = true;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        Initialize(gameObject.tag);
+    }
 
     // TODO: Call after instantiation
     public void Initialize(string tag)
     {
         if (tag == "Enemy")
         {
-            // Add enemy controller
+            facingDirection = Vector2.right;
+            // TODO: Toggle Enemy Controller
         }
         else if (tag == "Player")
         {
-            // Add player controller
-            gameObject.AddComponent<PlayerController>();
+            facingDirection = Vector2.left;
+            // TODO: Toggle Player Controller
         }
     }
 
@@ -73,6 +86,28 @@ public class Character : MonoBehaviour
         return dmgDealt;
     }
 
+    private Ray2D CreateRay()
+    {
+        if (facingDirection == Vector2.right)
+        {
+            Vector2 raycastPos = new Vector2(
+            transform.position.x + raycastOffset,
+            transform.position.y);
+
+            return new Ray2D(raycastPos, Vector2.right);
+        }
+        else if (facingDirection == Vector2.left)
+        {
+            Vector2 raycastPos = new Vector2(
+            transform.position.x - raycastOffset,
+            transform.position.y);
+
+            return new Ray2D(raycastPos, Vector2.left);
+        }
+
+        return default(Ray2D);
+    }
+
     public virtual float TakeDmg(float damage)
     {
         hp -= damage;
@@ -91,36 +126,41 @@ public class Character : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public  float GetHP()
+    public virtual void Move(float horizontalInput)
     {
-        return hp;
-    }
-
-    public float GetMaxHP()
-    {
-        return maxHp;
-    }
-
-    private Ray2D CreateRay()
-    {
-        if (gameObject.tag == "Enemy")
+        rb.velocity = new Vector2(horizontalInput * walkSpeed, rb.velocity.y);
+        if (horizontalInput < 0f)
         {
-            Vector2 raycastPos = new Vector2(
-            transform.position.x + raycastOffset,
-            transform.position.y);
-
-            return new Ray2D(raycastPos, Vector2.right);
+            facingDirection = Vector2.left;
         }
-        else if (gameObject.tag == "Player")
+        else if (horizontalInput > 0f)
         {
-            Vector2 raycastPos = new Vector2(
-            transform.position.x - raycastOffset,
-            transform.position.y);
-
-            return new Ray2D(raycastPos, Vector2.left);
+            facingDirection = Vector2.right;
         }
 
-        Debug.LogWarning("Incorrect Character Tag. It must be either 'Enemy', or 'Player'.");
-        return default(Ray2D);
+    }
+
+    public virtual void Jump()
+    {
+        if (onGround)
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            onGround = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ground")
+        {
+            onGround = false;
+        }
     }
 }
