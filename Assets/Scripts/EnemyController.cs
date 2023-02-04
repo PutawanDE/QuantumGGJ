@@ -26,6 +26,11 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!target)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+
         distanceToTarget = Mathf.Abs(((Vector2) target.position - (Vector2) transform.position).x);
         Debug.Log(distanceToTarget);    
         Debug.Log(currState);    

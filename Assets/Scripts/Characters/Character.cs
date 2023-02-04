@@ -8,7 +8,6 @@ public class Character : MonoBehaviour
 
     [SerializeField] protected float walkSpeed = 10.0f;
     [SerializeField] protected float jumpForce = 5f;
-    [SerializeField] protected float attackRatePerSec = 1.0f;
     [SerializeField] protected float attackRange = 1.0f;
     [SerializeField] protected float attackDamage = 1.0f;
     [SerializeField] protected float hp = 100.0f;
@@ -18,7 +17,6 @@ public class Character : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator animator;
-    private PlayerController playerController;
 
     private GameController gameController;
 
@@ -30,23 +28,33 @@ public class Character : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        Initialize(gameObject.tag);
     }
 
     // TODO: Call after instantiation
     public void Initialize(string tag)
     {
         gameObject.tag = tag;
-        playerController = GetComponent<PlayerController>();
         if (tag == "Enemy")
         {
             faceRight();
-            // TODO: Toggle Enemy Controller
+            PlayerController playerController = GetComponent<PlayerController>();
+            if (playerController)
+            {
+                Destroy(playerController);
+            }
+
+            gameObject.AddComponent<EnemyController>();
         }
         else if (tag == "Player")
         {
             faceLeft();
-            playerController.enabled = true;
+            EnemyController enemyController = GetComponent<EnemyController>();
+            if (enemyController)
+            {
+                Destroy(enemyController);
+            }
+            
+            gameObject.AddComponent<PlayerController>();
         }
     }
 
