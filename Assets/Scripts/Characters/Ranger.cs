@@ -21,6 +21,6 @@ public class Ranger : Character
     {
         Arrow spawnedArrow = Instantiate(arrow, transform.position, Quaternion.identity).GetComponent<Arrow>();
         Vector2 direction = facingLeft ? Vector2.left : Vector2.right;
-        spawnedArrow.Initialize(gameObject.tag, attackDamage, arrowSpeed, direction);
+        spawnedArrow.Initialize(this, attackDamage, arrowSpeed, direction);
     }
 }

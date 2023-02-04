@@ -18,6 +18,9 @@ public class Character : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator animator;
+    private PlayerController playerController;
+
+    private GameController gameController;
 
     private bool isAttacking = false;
     private bool onGround = true;
@@ -26,21 +29,24 @@ public class Character : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         Initialize(gameObject.tag);
     }
 
     // TODO: Call after instantiation
     public void Initialize(string tag)
     {
+        gameObject.tag = tag;
+        playerController = GetComponent<PlayerController>();
         if (tag == "Enemy")
         {
-            facingLeft = false;
+            faceRight();
             // TODO: Toggle Enemy Controller
         }
         else if (tag == "Player")
         {
-            facingLeft = true;
-            // TODO: Toggle Player Controller
+            faceLeft();
+            playerController.enabled = true;
         }
     }
 
@@ -53,7 +59,8 @@ public class Character : MonoBehaviour
                 isAttacking = true;
                 Attack();
             }
-        } else
+        }
+        else
         {
             isAttacking = false;
         }
@@ -88,7 +95,7 @@ public class Character : MonoBehaviour
                 {
                     Debug.Log("Attack");
                     Character opponent = hit.collider.gameObject.GetComponent<Character>();
-                    dmgDealt = opponent.TakeDmg(attackDamage);
+                    dmgDealt = opponent.TakeDmg(attackDamage, this);
                 }
             }
         }
@@ -117,21 +124,29 @@ public class Character : MonoBehaviour
         }
     }
 
-    public virtual float TakeDmg(float damage)
+    public virtual float TakeDmg(float damage, Character attacker)
     {
         hp -= damage;
         if (hp <= 0)
         {
-            Die();
+            Die(attacker);
             return hp;
         }
         return damage;
     }
 
-    public virtual void Die()
+    public virtual void Die(Character attacker)
     {
-        // send dead event bla bla
+        if (gameObject.tag == "Player")
+        {
+            gameController.GameOver();
+        }
+        else if (gameObject.tag == "Enemy")
+        {
+            gameController.NextRound(this.gameObject);
+        }
 
+        Destroy(attacker.gameObject);
         Destroy(gameObject);
     }
 
@@ -140,14 +155,12 @@ public class Character : MonoBehaviour
         rb.velocity = new Vector2(horizontalInput * walkSpeed, rb.velocity.y);
         if (horizontalInput < 0f)
         {
-            facingLeft = true;
-            transform.rotation = Quaternion.Euler(0, 180, 0);
+            faceLeft();
             animator.SetInteger("Direction", 1);
         }
         else if (horizontalInput > 0f)
         {
-            facingLeft = false;
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            faceRight();
             animator.SetInteger("Direction", 1);
         }
         else
@@ -193,4 +206,15 @@ public class Character : MonoBehaviour
         return maxHp;
     }
 
+    private void faceLeft()
+    {
+        facingLeft = true;
+        transform.rotation = Quaternion.Euler(0, 180, 0);
+    }
+
+    private void faceRight()
+    {
+        facingLeft = false;
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
 }
