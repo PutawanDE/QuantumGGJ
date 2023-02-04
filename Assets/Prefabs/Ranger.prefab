@@ -57,11 +57,48 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 9e9ecbd8720a97a45a143a47daaee5de, type: 2}
     - target: {fileID: 3205724985710004316, guid: 3114a8327bddfd74198605b0ad79c1a5, type: 3}
       propertyPath: m_Name
-      value: RANGER
+      value: Ranger
       objectReference: {fileID: 0}
     - target: {fileID: 3205724985710004317, guid: 3114a8327bddfd74198605b0ad79c1a5, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1306532490, guid: 9c022cde868829b47a76d4c62845e56c, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3205724985710004295, guid: 3114a8327bddfd74198605b0ad79c1a5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3114a8327bddfd74198605b0ad79c1a5, type: 3}
+--- !u!1 &1728946156252682408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3205724985710004316, guid: 3114a8327bddfd74198605b0ad79c1a5, type: 3}
+  m_PrefabInstance: {fileID: 4288401827191394548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-7431089890401445339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728946156252682408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26dfc50c53d12ad42bae4c84f45d00c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  groundCheckRadius: 0.3
+  walkSpeed: 10
+  jumpForce: 5
+  attackRange: 1
+  attackDamage: 1
+  hp: 100
+  maxHp: 100
+  crown: {fileID: 4288401828233073226}
+  raycastOffset: 0
+  arrow: {fileID: 0}
+  arrowSpeed: 0
+--- !u!1 &4288401828233073226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1108787902, guid: 3114a8327bddfd74198605b0ad79c1a5, type: 3}
+  m_PrefabInstance: {fileID: 4288401827191394548}
+  m_PrefabAsset: {fileID: 0}
