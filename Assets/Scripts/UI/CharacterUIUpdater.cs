@@ -8,18 +8,25 @@ public class CharacterUIUpdater : MonoBehaviour
 {
     [SerializeField] protected Slider HPSlider;
     [SerializeField] protected TextMeshProUGUI nameTextMesh;
+    [SerializeField] protected string characterTag;
     [SerializeField] protected Character character;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateUI();
+        if (!character)
+        {
+            GameObject go = GameObject.FindGameObjectWithTag(characterTag);
+            if (go) character = go.GetComponent<Character>();
+        }
+
+        if (character) UpdateUI();
     }
 
     protected void UpdateUI()
