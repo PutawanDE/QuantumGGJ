@@ -13263,7 +13263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characters:
   - {fileID: 3205724985710004316, guid: 3114a8327bddfd74198605b0ad79c1a5, type: 3}
-  - {fileID: 1728946156252682408, guid: 004667652cf1b6a4d99941d3a15acde8, type: 3}
+  - {fileID: 3205724985710004316, guid: 3fc1339ae81e29343a2545d29e6fa64d, type: 3}
   playerSpawnPoint: {x: 2, y: 0}
   enemySpawnPoint: {x: -2, y: 0}
   cam: {fileID: 738365029}

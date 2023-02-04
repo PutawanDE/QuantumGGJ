@@ -9,13 +9,19 @@ public class Character : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundCheckRadius;
 
-    [SerializeField] protected float walkSpeed = 10.0f;
-    [SerializeField] protected float jumpForce = 5f;
-    [SerializeField] protected float attackRange = 1.0f;
-    [SerializeField] protected float attackDamage = 1.0f;
-    [SerializeField] protected float hp = 100.0f;
-    [SerializeField] protected float maxHp = 100.0f;
+    [SerializeField] private float baseAttackDamage;
+    [SerializeField] private float baseMaxHp;
+    [SerializeField] private float baseWalkSpeed;
+
+    [SerializeField] protected float attackRange;
+
+    [SerializeField] protected float walkSpeed;
+    [SerializeField] protected float jumpForce;
+    [SerializeField] protected float attackDamage;
+    [SerializeField] protected float hp;
+    [SerializeField] protected float maxHp;
     [SerializeField] protected GameObject crown;
+    [SerializeField] protected int deathCount = 0;
 
     [SerializeField] protected float raycastOffset;
 
@@ -32,18 +38,17 @@ public class Character : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        UpdateStat();
     }
 
-    // TODO: Call after instantiation
     public void Initialize(string tag)
     {
         gameObject.tag = tag;
-        hp = maxHp;
-        Debug.Log(hp);
-        
+
         int layer = LayerMask.NameToLayer(tag);
         gameObject.layer = layer;
-        
+
+        UpdateStat();
 
         if (tag == "Enemy")
         {
@@ -69,6 +74,14 @@ public class Character : MonoBehaviour
             gameObject.AddComponent<PlayerController>();
             crown.SetActive(false);
         }
+    }
+
+    protected virtual void UpdateStat()
+    {
+        walkSpeed = baseWalkSpeed * (1 + deathCount * 0.1f);
+        attackDamage = baseAttackDamage * (1 + deathCount * 0.1f);
+        maxHp = baseMaxHp * (1 + deathCount * 0.1f);
+        hp = maxHp;
     }
 
     private void Update()
@@ -176,7 +189,7 @@ public class Character : MonoBehaviour
     public virtual void Move(float horizontalInput)
     {
         if (isAttacking) return;
-        
+
         rb.velocity = new Vector2(horizontalInput * walkSpeed, rb.velocity.y);
         if (horizontalInput < 0f)
         {
