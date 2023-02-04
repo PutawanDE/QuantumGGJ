@@ -13,7 +13,7 @@ public class Ranger : Character
         attackDamage = 2.0f;
         maxHp = 50.0f;
         hp = maxHp;
-        walkSpeed = 15.0f;
+        walkSpeed = 2.0f;
     }
 
     protected override void Attack()
