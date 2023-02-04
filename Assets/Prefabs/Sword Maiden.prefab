@@ -246,7 +246,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   groundCheckRadius: 0.3
-  walkSpeed: 5
+  walkSpeed: 2
   jumpForce: 3
   attackRange: 1
   attackDamage: 20
