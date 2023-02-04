@@ -163,4 +163,15 @@ public class Character : MonoBehaviour
             onGround = false;
         }
     }
+
+    public float GetHP()
+    {
+        return hp;
+    }
+
+    public float GetMaxHP()
+    {
+        return maxHp;
+    }
+
 }
