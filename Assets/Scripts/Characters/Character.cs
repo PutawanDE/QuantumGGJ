@@ -40,6 +40,11 @@ public class Character : MonoBehaviour
         gameObject.tag = tag;
         hp = maxHp;
         Debug.Log(hp);
+        
+        int layer = LayerMask.NameToLayer(tag);
+        gameObject.layer = layer;
+        
+
         if (tag == "Enemy")
         {
             faceRight();

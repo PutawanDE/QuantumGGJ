@@ -11,10 +11,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private Vector2 enemySpawnPoint;
     [SerializeField] private CinemachineVirtualCamera cam;
 
-    private GameObject player;
-    private GameObject enemy;
+    public GameObject player;
+    public GameObject enemy;
 
-    private void Start()
+    private void Awake()
     {
         enemy = Instantiate(RandomCharacter(), enemySpawnPoint, Quaternion.identity);
         enemy.GetComponent<Character>().Initialize("Enemy");

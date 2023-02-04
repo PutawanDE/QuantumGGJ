@@ -8,8 +8,9 @@ public class CharacterUIUpdater : MonoBehaviour
 {
     [SerializeField] protected Slider HPSlider;
     [SerializeField] protected TextMeshProUGUI nameTextMesh;
-    [SerializeField] protected string characterTag;
-    [SerializeField] protected Character character;
+    [SerializeField] private GameController gameController;
+    [SerializeField] private bool isBoss;
+    [SerializeField] private Character character;
 
     // Start is called before the first frame update
     void Start()
@@ -20,17 +21,14 @@ public class CharacterUIUpdater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!character)
-        {
-            GameObject go = GameObject.FindGameObjectWithTag(characterTag);
-            if (go) character = go.GetComponent<Character>();
-        }
-
-        if (character) UpdateUI();
+        UpdateUI();
     }
 
     protected void UpdateUI()
     {
+        if (isBoss) character = gameController.enemy.GetComponent<Character>();
+        else character = gameController.player.GetComponent<Character>();
+
         if (character != null)
         {
             if (nameTextMesh != null)
