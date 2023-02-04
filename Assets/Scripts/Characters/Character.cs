@@ -166,6 +166,8 @@ public class Character : MonoBehaviour
 
     public virtual void Move(float horizontalInput)
     {
+        if (isAttacking) return;
+        
         rb.velocity = new Vector2(horizontalInput * walkSpeed, rb.velocity.y);
         if (horizontalInput < 0f)
         {
