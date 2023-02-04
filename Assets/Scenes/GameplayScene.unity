@@ -13267,6 +13267,7 @@ MonoBehaviour:
   playerSpawnPoint: {x: 2, y: 0}
   enemySpawnPoint: {x: -2, y: 0}
   cam: {fileID: 738365029}
+  scoreboard: {fileID: 11400000, guid: 1cf9b2f963fc99a4ab70803f58716790, type: 2}
   player: {fileID: 0}
   enemy: {fileID: 0}
 --- !u!4 &337142335
