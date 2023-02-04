@@ -7,15 +7,21 @@ using System;
 public class Scoreboard : ScriptableObject 
 {
     public int MaxScore;
-    public int addNewScore(int score)
+    public int CurrentScore;
+    public int findMaxScore(int score)
     {
         this.MaxScore = Math.Max(this.MaxScore, score);
         return this.MaxScore;
     }
 
-    public int getScore()
+    public string getCurrentScore()
     {
-        return this.MaxScore;
+        return this.MaxScore.ToString();
+    }
+
+    public string getHighScore()
+    {
+        return "High Score: " + this.MaxScore.ToString();
     }
 }
 
