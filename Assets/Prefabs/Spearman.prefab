@@ -97,9 +97,9 @@ GameObject:
   - component: {fileID: 3205724985710004291}
   - component: {fileID: 3205724985710004289}
   - component: {fileID: 3205724985710004294}
-  - component: {fileID: 2488247238442291944}
+  - component: {fileID: 5798504173815128721}
   m_Layer: 0
-  m_Name: Ranger
+  m_Name: Spearman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,7 +183,7 @@ Animator:
   m_GameObject: {fileID: 3205724985710004316}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9e9ecbd8720a97a45a143a47daaee5de, type: 2}
+  m_Controller: {fileID: 9100000, guid: c7e38d8f75f4eb64b9e49f60edcac5ed, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -230,7 +230,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0035548732, y: 0.0005773008}
   m_Size: {x: 0.1961654, y: 0.47884542}
   m_Direction: 0
---- !u!114 &2488247238442291944
+--- !u!114 &5798504173815128721
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,20 +239,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 3205724985710004316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26dfc50c53d12ad42bae4c84f45d00c0, type: 3}
+  m_Script: {fileID: 11500000, guid: bc4fb6846a196fd40bcb9d7f7c0a08af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  groundCheckRadius: 0.3
+  groundCheckRadius: 0.5
   walkSpeed: 10
   jumpForce: 5
-  attackRange: 1
-  attackDamage: 1
+  attackRange: 3
+  attackDamage: 15
   hp: 100
   maxHp: 100
   crown: {fileID: 1108787902}
   raycastOffset: 0.6
-  arrow: {fileID: 0}
-  arrowSpeed: 10

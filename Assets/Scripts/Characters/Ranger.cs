@@ -7,14 +7,11 @@ public class Ranger : Character
     [SerializeField] private GameObject arrow;
     [SerializeField] private float arrowSpeed;
 
-    private void Awake()
-    {
-        attackRange = 10.0f;
-        attackDamage = 2.0f;
-        maxHp = 50.0f;
-        hp = maxHp;
-        walkSpeed = 2.0f;
-    }
+    //     attackRange = 10.0f;
+    //     attackDamage = 2.0f;
+    //     maxHp = 50.0f;
+    //     hp = maxHp;
+    //     walkSpeed = 2.0f;
 
     protected override void Attack()
     {
