@@ -38,6 +38,13 @@ public class Character : MonoBehaviour
     public void Initialize(string tag)
     {
         gameObject.tag = tag;
+        hp = maxHp;
+        Debug.Log(hp);
+        
+        int layer = LayerMask.NameToLayer(tag);
+        gameObject.layer = layer;
+        
+
         if (tag == "Enemy")
         {
             faceRight();
@@ -48,7 +55,7 @@ public class Character : MonoBehaviour
             }
 
             gameObject.AddComponent<EnemyController>();
-            crown.SetActive(false);
+            crown.SetActive(true);
         }
         else if (tag == "Player")
         {
@@ -60,7 +67,7 @@ public class Character : MonoBehaviour
             }
 
             gameObject.AddComponent<PlayerController>();
-            crown.SetActive(true);
+            crown.SetActive(false);
         }
     }
 
@@ -160,11 +167,10 @@ public class Character : MonoBehaviour
         }
         else if (gameObject.tag == "Enemy")
         {
-            gameController.NextRound(this.gameObject);
+            gameController.NextRound();
         }
 
-        Destroy(attacker.gameObject);
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 
     public virtual void Move(float horizontalInput)

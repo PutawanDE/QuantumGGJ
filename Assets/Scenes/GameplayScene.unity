@@ -13263,9 +13263,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characters:
   - {fileID: 3205724985710004316, guid: 3114a8327bddfd74198605b0ad79c1a5, type: 3}
+  - {fileID: 1728946156252682408, guid: 004667652cf1b6a4d99941d3a15acde8, type: 3}
   playerSpawnPoint: {x: 2, y: 0}
   enemySpawnPoint: {x: -2, y: 0}
   cam: {fileID: 738365029}
+  player: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!4 &337142335
 Transform:
   m_ObjectHideFlags: 0
@@ -28497,7 +28500,7 @@ GameObject:
   - component: {fileID: 1312993853}
   - component: {fileID: 1312993854}
   m_Layer: 5
-  m_Name: 'Boss HP bar '
+  m_Name: 'Player HP bar '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28592,7 +28595,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HPSlider: {fileID: 1312993853}
   nameTextMesh: {fileID: 1538165148}
-  characterTag: Enemy
+  gameController: {fileID: 337142334}
+  isBoss: 0
   character: {fileID: 0}
 --- !u!1 &1370537287
 GameObject:
@@ -59922,7 +59926,7 @@ GameObject:
   - component: {fileID: 1835441018}
   - component: {fileID: 1835441019}
   m_Layer: 5
-  m_Name: Player HP bar
+  m_Name: Boss HP bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60017,7 +60021,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HPSlider: {fileID: 1835441018}
   nameTextMesh: {fileID: 1085096648}
-  characterTag: Player
+  gameController: {fileID: 337142334}
+  isBoss: 1
   character: {fileID: 0}
 --- !u!1 &1847683307
 GameObject:
