@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    private bool facingLeft;
+    protected bool facingLeft;
 
     [SerializeField] protected float walkSpeed = 10.0f;
     [SerializeField] protected float jumpForce = 5f;
@@ -67,7 +67,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    private float Attack()
+    protected virtual void Attack()
     {
         float dmgDealt = 0f;
 
@@ -89,14 +89,12 @@ public class Character : MonoBehaviour
                     Debug.Log("Attack");
                     Character opponent = hit.collider.gameObject.GetComponent<Character>();
                     dmgDealt = opponent.TakeDmg(attackDamage);
-                    Debug.Log("dmg: " + dmgDealt);
                 }
             }
         }
 
         animator.ResetTrigger("Attack");
         Debug.Log("Dmg dealt: " + dmgDealt);
-        return dmgDealt;
     }
 
     private Ray2D CreateRay()
