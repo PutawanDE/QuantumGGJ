@@ -15,6 +15,7 @@ public class Character : MonoBehaviour
     [SerializeField] protected float attackDamage = 1.0f;
     [SerializeField] protected float hp = 100.0f;
     [SerializeField] protected float maxHp = 100.0f;
+    [SerializeField] protected GameObject crown;
 
     [SerializeField] protected float raycastOffset;
 
@@ -47,6 +48,7 @@ public class Character : MonoBehaviour
             }
 
             gameObject.AddComponent<EnemyController>();
+            crown.SetActive(false);
         }
         else if (tag == "Player")
         {
@@ -58,6 +60,7 @@ public class Character : MonoBehaviour
             }
 
             gameObject.AddComponent<PlayerController>();
+            crown.SetActive(true);
         }
     }
 
