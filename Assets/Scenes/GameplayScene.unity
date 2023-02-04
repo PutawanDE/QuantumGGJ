@@ -17092,9 +17092,10 @@ GameObject:
   - component: {fileID: 1123656082}
   - component: {fileID: 1123656083}
   - component: {fileID: 1123656084}
+  - component: {fileID: 1123656085}
   m_Layer: 0
-  m_Name: TestChar
-  m_TagString: Untagged
+  m_Name: Swordmaiden
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17198,7 +17199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8309a3f0429b4848850df9ce2c4b9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 2
   jumpForce: 3
 --- !u!50 &1123656083
 Rigidbody2D:
@@ -17237,6 +17237,25 @@ CapsuleCollider2D:
   m_Offset: {x: -0.06409773, y: 0}
   m_Size: {x: 0.19616541, y: 0.48}
   m_Direction: 0
+--- !u!114 &1123656085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123656078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b969cb8b19fcd479988d8ee14cb656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 2
+  attackRatePerSec: 1
+  attackRange: 1
+  attackDamage: 1
+  hp: 100
+  maxHp: 100
+  raycastOffset: 0
 --- !u!1 &1239605218
 GameObject:
   m_ObjectHideFlags: 0
