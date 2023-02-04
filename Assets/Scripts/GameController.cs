@@ -10,7 +10,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private Vector2 playerSpawnPoint;
     [SerializeField] private Vector2 enemySpawnPoint;
     [SerializeField] private CinemachineVirtualCamera cam;
-
+    
+    [SerializeField] private Scoreboard scoreboard;
+    
     public GameObject player;
     public GameObject enemy;
 
@@ -26,6 +28,7 @@ public class GameController : MonoBehaviour
 
     public void NextRound()
     {
+        scoreboard.CurrentScore += 10;
         enemy = player;
         enemy.GetComponent<Character>().Initialize("Enemy");
 
@@ -37,7 +40,7 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
-
+        scoreboard.findMaxScore(scoreboard.CurrentScore);
     }
 
     private GameObject RandomCharacter()
