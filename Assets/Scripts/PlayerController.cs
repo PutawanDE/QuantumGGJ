@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float jumpForce = 5f;
-
     private Character character;
-    private Rigidbody2D rb;
 
-    private float horizontalInput;
-    private bool jumpPress;
-    private bool onGround;
+    private float horizontalInput = 0f;
+    private bool jumpPress = false;
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
         character = GetComponent<Character>();
     }
 
@@ -26,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     void CaptureInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
+        horizontalInput = Input.GetAxis("Horizontal");
         jumpPress = Input.GetButton("Jump");
 
         if (Input.GetButton("Fire1"))
@@ -38,37 +33,12 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Move();
-        Jump();
-    }
+        character.Move(horizontalInput);
 
-    void Move()
-    {
-        rb.velocity = new Vector2(horizontalInput * character.walkSpeed, rb.velocity.y);
-    }
-
-    void Jump()
-    {
-        if (jumpPress && onGround)
+        if (jumpPress)
         {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            character.Jump();
             jumpPress = false;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Ground")
-        {
-            onGround = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Ground")
-        {
-            onGround = false;
         }
     }
 }
