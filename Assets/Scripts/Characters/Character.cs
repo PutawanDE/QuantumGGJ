@@ -25,6 +25,9 @@ public class Character : MonoBehaviour
 
     [SerializeField] protected float raycastOffset;
 
+    [Header("Blood Sprout Prefab")]
+    public GameObject bloodSprout;
+
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -163,6 +166,9 @@ public class Character : MonoBehaviour
 
     public virtual float TakeDmg(float damage, Character attacker)
     {
+        if (bloodSprout != null)
+            Instantiate(bloodSprout, transform);
+
         hp -= damage;
         if (hp <= 0)
         {

@@ -12,6 +12,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera cam;
     
     [SerializeField] private Scoreboard scoreboard;
+
+    [Header("BloodSprout FX Prefab")]
+    [SerializeField] private GameObject bloodSprout;
     
     public GameObject player;
     public GameObject enemy;
@@ -24,6 +27,13 @@ public class GameController : MonoBehaviour
         player = Instantiate(RandomCharacter(), playerSpawnPoint, Quaternion.identity);
         player.GetComponent<Character>().Initialize("Player");
         cam.Follow = player.transform;
+
+        if (bloodSprout != null)
+        {
+            enemy.GetComponent<Character>().bloodSprout = bloodSprout;
+            player.GetComponent<Character>().bloodSprout = bloodSprout;
+        }
+
     }
 
     public void NextRound()
@@ -36,6 +46,12 @@ public class GameController : MonoBehaviour
         player.GetComponent<Character>().Initialize("Player");
 
         cam.Follow = player.transform;
+
+        if (bloodSprout != null)
+        {
+            enemy.GetComponent<Character>().bloodSprout = bloodSprout;
+            player.GetComponent<Character>().bloodSprout = bloodSprout;
+        }
     }
 
     public void GameOver()
