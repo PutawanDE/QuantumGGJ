@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
     private enum AIState {
         idle, run, attack, backoff
     }
+    private float backOffChance = 0.5f;
+    private int counter = 0;
     
     private AIState currState = AIState.idle;
 
@@ -25,7 +27,7 @@ public class EnemyController : MonoBehaviour
     }
 
     private bool ShouldBackOff() {
-        return Random.value < 0.5f;
+        return Random.value < backOffChance;
     }
 
     void Update()
@@ -43,8 +45,9 @@ public class EnemyController : MonoBehaviour
         {
             case AIState.idle:
             {
-                if (distanceToTarget > attackRange) 
+                if (distanceToTarget > attackRange) {
                     currState = AIState.run;
+                }
                 else if (Input.GetKeyDown("e") && ShouldBackOff()) {
                     currState = AIState.backoff;
                 }
@@ -71,6 +74,13 @@ public class EnemyController : MonoBehaviour
             }
             case AIState.backoff:
             {
+                // this guy not moving so fight him to dead
+                if (counter >= 1000) {
+                    currState = AIState.attack;
+                    backOffChance = 0.0f;
+                    counter = 0;
+                }
+
                 if (distanceToTarget > attackRange * 5){
                     character.Jump();
                     currState = AIState.idle;
@@ -78,6 +88,7 @@ public class EnemyController : MonoBehaviour
 
                 Vector2 direction = (Vector2) target.position - (Vector2) transform.position;
                 character.Move(Mathf.Clamp(-direction.x, -0.3f, 0.3f));
+                counter += 1;
                 break;
             }
         };
