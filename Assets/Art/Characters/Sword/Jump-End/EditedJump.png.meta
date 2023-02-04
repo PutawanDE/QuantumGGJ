@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 38b11f3d953bef149a8c3606eeaec2c6
+guid: 18b7a78872f13394ab65d577a9fcba28
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,64 +105,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jump-End-Sheet_0
+      name: EditedJump_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
-        height: 64
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b98b653274a68349837d1360f1f3f9e
-      internalID: -705388767
+      spriteID: bf770c93b2c8e304693fb5848066bf4a
+      internalID: 1709251682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump-End-Sheet_1
+      name: EditedJump_1
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
-        height: 64
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3751d699be98414fa7621677f1acd07
-      internalID: -1596528233
+      spriteID: 50149d76f8eb47045834bffcd8c85a7d
+      internalID: 1446935514
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump-End-Sheet_2
+      name: EditedJump_2
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 64
-        height: 64
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47561b475d5a148409d9b5bb7b829e46
-      internalID: 380932798
+      spriteID: c19f22a701b4c4142853f3996574f271
+      internalID: 335980064
       vertices: []
       indices: 
       edges: []
@@ -178,9 +178,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Jump-End-Sheet_0: -705388767
-      Jump-End-Sheet_1: -1596528233
-      Jump-End-Sheet_2: 380932798
+      EditedJump_1: 1446935514
+      EditedJump_0: 1709251682
+      EditedJump_2: 335980064
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
