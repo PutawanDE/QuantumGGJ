@@ -4,42 +4,47 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float walkSpeed;
-    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpForce = 5f;
 
+    private Character character;
     private Rigidbody2D rb;
 
     private float horizontalInput;
     private bool jumpPress;
     private bool onGround;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        character = GetComponent<Character>();
     }
 
     void Update()
     {
-        CaputureInput();
+        CaptureInput();
     }
 
-    void CaputureInput()
+    void CaptureInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
-        jumpPress = Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W);
+        jumpPress = Input.GetButton("Jump");
+
+        if (Input.GetButton("Fire1"))
+        {
+            character.StartAttack();
+
+        }
     }
 
     void FixedUpdate()
     {
         Move();
         Jump();
-        Attack();
     }
 
     void Move()
     {
-        rb.velocity = new Vector2(horizontalInput * walkSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(horizontalInput * character.walkSpeed, rb.velocity.y);
     }
 
     void Jump()
@@ -49,11 +54,6 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumpPress = false;
         }
-    }
-
-    void Attack()
-    {
-        
     }
 
     private void OnCollisionEnter2D(Collision2D other)

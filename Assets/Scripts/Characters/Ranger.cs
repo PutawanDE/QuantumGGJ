@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ranger : Charactor
+public class Ranger : Character
 {
     private void Awake()
     {
@@ -10,7 +10,7 @@ public class Ranger : Charactor
         attackDamage = 2.0f;
         maxHp = 50.0f;
         hp = maxHp;
-        speed = 15.0f;
-        attackSpeed = 2.0f;
+        walkSpeed = 15.0f;
+        attackRatePerSec = 2.0f;
     }
 }

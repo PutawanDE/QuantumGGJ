@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Charactor
+public class Enemy : Character
 {
     public static int deathCount = 0;
 
     private void Awake()
     {
-        speed = 10.0f * (1 + deathCount * 0.1f);
-        attackSpeed = 1.0f * (1 + deathCount * 0.1f);
+        walkSpeed = 10.0f * (1 + deathCount * 0.1f);
+        attackRatePerSec = 1.0f * (1 + deathCount * 0.1f);
         attackDamage = 1.0f * (1 + deathCount * 0.1f);
         hp = 60.0f * (1 + deathCount * 0.1f);
         maxHp = 60.0f * (1 + deathCount * 0.1f);

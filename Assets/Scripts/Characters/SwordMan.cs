@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpearMan : Charactor
+public class SwordMan : Character
 {
     private void Awake()
     {
-        attackRange = 2.0f;
-        attackDamage = 2.0f;
+        hp = 200.0f;
+        maxHp = 200.0f;
     }
 }
