@@ -194,9 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26dfc50c53d12ad42bae4c84f45d00c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
+  walkSpeed: 2
   jumpForce: 2.5
-  attackRatePerSec: 1
   attackRange: 1
   attackDamage: 1
   hp: 100
@@ -28491,7 +28490,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 2
   jumpForce: 3
-  attackRatePerSec: 1
   attackRange: 1
   attackDamage: 1
   hp: 100
