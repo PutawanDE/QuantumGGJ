@@ -17199,7 +17199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8309a3f0429b4848850df9ce2c4b9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 3
 --- !u!50 &1123656083
 Rigidbody2D:
   serializedVersion: 4
@@ -17250,6 +17249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 2
+  jumpForce: 3
   attackRatePerSec: 1
   attackRange: 1
   attackDamage: 1
