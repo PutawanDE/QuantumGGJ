@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    private Vector2 facingDirection;
+    private bool facingLeft;
 
     [SerializeField] protected float walkSpeed = 10.0f;
     [SerializeField] protected float jumpForce = 5f;
@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
     [SerializeField] protected float raycastOffset;
 
     private Rigidbody2D rb;
+    private Animator animator;
 
     private bool isAttacking = false;
     private bool onGround = true;
@@ -24,6 +25,7 @@ public class Character : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         Initialize(gameObject.tag);
     }
 
@@ -32,35 +34,44 @@ public class Character : MonoBehaviour
     {
         if (tag == "Enemy")
         {
-            facingDirection = Vector2.right;
+            facingLeft = false;
             // TODO: Toggle Enemy Controller
         }
         else if (tag == "Player")
         {
-            facingDirection = Vector2.left;
+            facingLeft = true;
             // TODO: Toggle Player Controller
+        }
+    }
+
+    private void Update()
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            if (!isAttacking)
+            {
+                isAttacking = true;
+                Attack();
+            }
+        } else
+        {
+            isAttacking = false;
         }
     }
 
     public virtual void StartAttack()
     {
-        if (!isAttacking) StartCoroutine(AttackCooldown());
-    }
-
-
-    private IEnumerator AttackCooldown()
-    {
-        isAttacking = true;
-        Debug.Log("Start attacking");
-        Attack();
-        yield return new WaitForSeconds(1f / attackRatePerSec);
-        isAttacking = false;
+        if (onGround)
+        {
+            animator.SetTrigger("Attack");
+        }
     }
 
     private float Attack()
     {
         float dmgDealt = 0f;
 
+        Debug.Log("Attack");
         Ray2D ray = CreateRay();
         Debug.DrawRay(ray.origin, ray.direction * attackRange, Color.green);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction * attackRange);
@@ -83,12 +94,14 @@ public class Character : MonoBehaviour
             }
         }
 
+        animator.ResetTrigger("Attack");
+        Debug.Log("Dmg dealt: " + dmgDealt);
         return dmgDealt;
     }
 
     private Ray2D CreateRay()
     {
-        if (facingDirection == Vector2.right)
+        if (!facingLeft)
         {
             Vector2 raycastPos = new Vector2(
             transform.position.x + raycastOffset,
@@ -96,7 +109,7 @@ public class Character : MonoBehaviour
 
             return new Ray2D(raycastPos, Vector2.right);
         }
-        else if (facingDirection == Vector2.left)
+        else
         {
             Vector2 raycastPos = new Vector2(
             transform.position.x - raycastOffset,
@@ -104,8 +117,6 @@ public class Character : MonoBehaviour
 
             return new Ray2D(raycastPos, Vector2.left);
         }
-
-        return default(Ray2D);
     }
 
     public virtual float TakeDmg(float damage)
@@ -131,11 +142,19 @@ public class Character : MonoBehaviour
         rb.velocity = new Vector2(horizontalInput * walkSpeed, rb.velocity.y);
         if (horizontalInput < 0f)
         {
-            facingDirection = Vector2.left;
+            facingLeft = true;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            animator.SetInteger("Direction", 1);
         }
         else if (horizontalInput > 0f)
         {
-            facingDirection = Vector2.right;
+            facingLeft = false;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            animator.SetInteger("Direction", 1);
+        }
+        else
+        {
+            animator.SetInteger("Direction", 0);
         }
 
     }
@@ -152,6 +171,7 @@ public class Character : MonoBehaviour
     {
         if (other.gameObject.tag == "Ground")
         {
+            animator.SetBool("IsInAir?", false);
             onGround = true;
         }
     }
@@ -160,6 +180,7 @@ public class Character : MonoBehaviour
     {
         if (other.gameObject.tag == "Ground")
         {
+            animator.SetBool("IsInAir?", true);
             onGround = false;
         }
     }
