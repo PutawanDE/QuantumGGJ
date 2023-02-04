@@ -196,8 +196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
-  groundCheckRadius: 0.5
+    m_Bits: 0
+  groundCheckRadius: 0
   walkSpeed: 10
   jumpForce: 2.5
   attackRange: 1
@@ -28494,8 +28494,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
-  groundCheckRadius: 0.5
+    m_Bits: 0
+  groundCheckRadius: 0
   walkSpeed: 2
   jumpForce: 3
   attackRange: 1
