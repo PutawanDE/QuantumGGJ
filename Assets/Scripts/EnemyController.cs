@@ -33,8 +33,7 @@ public class EnemyController : MonoBehaviour
     }
 
     private void MeleeBot() {
-        float attackRange = character.getAttackrange();
-
+        const float attackRange = 0.2f;
         distanceToTarget = Vector2.Distance(target.position, transform.position);
         Debug.Log(currState);
     

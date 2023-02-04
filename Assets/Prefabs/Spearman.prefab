@@ -246,11 +246,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   groundCheckRadius: 0.5
+  baseAttackDamage: 25
+  baseMaxHp: 200
+  baseWalkSpeed: 2.5
+  attackRange: 2
   walkSpeed: 2.5
   jumpForce: 3
-  attackRange: 3
-  attackDamage: 20
-  hp: 250
-  maxHp: 250
+  attackDamage: 15
+  hp: 200
+  maxHp: 200
   crown: {fileID: 1108787902}
+  deathCount: 0
   raycastOffset: 0.6
