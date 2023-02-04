@@ -128,7 +128,7 @@ public class Character : MonoBehaviour
         Debug.Log("Dmg dealt: " + dmgDealt);
     }
 
-    private Ray2D CreateRay()
+    public Ray2D CreateRay()
     {
         if (!facingLeft)
         {
@@ -227,15 +227,16 @@ public class Character : MonoBehaviour
         return maxHp;
     }
 
-    private void faceLeft()
+    public void faceLeft()
     {
         facingLeft = true;
         transform.rotation = Quaternion.Euler(0, 180, 0);
     }
 
-    private void faceRight()
+    public void faceRight()
     {
         facingLeft = false;
         transform.rotation = Quaternion.Euler(0, 0, 0);
     }
+
 }

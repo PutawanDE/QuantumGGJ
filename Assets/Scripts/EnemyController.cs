@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {  
+    public LayerMask layermask;
+
     private Transform target;
     private Character character;
     private float distanceToTarget;
-    private float attackRange = 0.2f;
     
     private enum AIState {
         idle, run, attack, backoff
@@ -22,6 +23,7 @@ public class EnemyController : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         character = GetComponent<Character>(); 
+    
         if (target == null)
             Debug.LogError("Something wrong");
     }
@@ -30,15 +32,9 @@ public class EnemyController : MonoBehaviour
         return Random.value < backOffChance;
     }
 
-    void Update()
-    {
-        if (!target)
-        {
-            target = GameObject.FindGameObjectWithTag("Player").transform;
-        }       
-
+    private void MeleeBot() {
+        const float attackRange = 0.2f;
         distanceToTarget = Vector2.Distance(target.position, transform.position);
-        
         Debug.Log(currState);
     
         switch (currState)
@@ -59,7 +55,7 @@ public class EnemyController : MonoBehaviour
             case AIState.run:
             {
                 Vector2 direction = (Vector2) target.position - (Vector2) transform.position;
-                character.Move(Mathf.Clamp(direction.x, -0.1f, 0.1f));
+                character.Move(Mathf.Clamp(direction.x, -0.5f, 0.5f));
 
                 if (distanceToTarget <= attackRange)
                     currState = AIState.attack;
@@ -92,5 +88,61 @@ public class EnemyController : MonoBehaviour
                 break;
             }
         };
+    }
+
+    private void RangerBot() {
+        const float attackRange = 2f;
+        distanceToTarget = Vector2.Distance(target.position, transform.position);
+        Debug.Log(currState);
+    
+        Vector2 direction = (Vector2) target.position - (Vector2) transform.position;
+
+        switch (currState)
+        {
+            case AIState.idle:
+            {
+                if (distanceToTarget > attackRange) {
+                    currState = AIState.run;
+                }
+                else {
+                    currState = AIState.attack;
+                }
+                break;
+            }
+            case AIState.run:
+            {
+                character.Move(Mathf.Clamp(direction.x, -0.5f, 0.5f));
+
+                if (distanceToTarget <= attackRange)
+                    currState = AIState.attack;
+                break;
+            }
+            case AIState.attack: 
+            {
+                if (direction.x < 0) character.faceLeft();
+                else if (direction.y > 0) character.faceRight();
+
+                character.Move(0);
+                character.StartAttack();
+                currState = AIState.idle;
+                break;
+            }
+        };
+
+    }
+
+    void Update()
+    {
+        if (!target)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }       
+
+        if (character.GetType() == typeof(Ranger)) {
+            RangerBot();
+        }
+        else {
+            MeleeBot();
+        }
     }
 }
