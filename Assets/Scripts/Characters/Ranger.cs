@@ -14,13 +14,12 @@ public class Ranger : Character
         maxHp = 50.0f;
         hp = maxHp;
         walkSpeed = 15.0f;
-        attackRatePerSec = 2.0f;
     }
 
     protected override void Attack()
     {
         Arrow spawnedArrow = Instantiate(arrow, transform.position, Quaternion.identity).GetComponent<Arrow>();
         Vector2 direction = facingLeft ? Vector2.left : Vector2.right;
-        spawnedArrow.Initialize(gameObject.tag, attackDamage, arrowSpeed, direction);
+        spawnedArrow.Initialize(this, attackDamage, arrowSpeed, direction);
     }
 }

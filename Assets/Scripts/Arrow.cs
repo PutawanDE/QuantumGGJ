@@ -6,12 +6,12 @@ public class Arrow : MonoBehaviour
 {
     private float speed;
     private float attackDamage;
-    private string owner;
+    private Character owner;
     private Vector2 direction;
 
     private float dmgDealt;
 
-    public void Initialize(string owner, float attackDamage, float speed, Vector2 direction)
+    public void Initialize(Character owner, float attackDamage, float speed, Vector2 direction)
     {
         this.owner = owner;
         this.attackDamage = attackDamage;
@@ -28,10 +28,10 @@ public class Arrow : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Player")
         {
-            if (owner != other.gameObject.tag)
+            if (owner.gameObject.tag != other.gameObject.tag)
             {
                 Character opponent = other.gameObject.GetComponent<Character>();
-                dmgDealt = opponent.TakeDmg(attackDamage);
+                dmgDealt = opponent.TakeDmg(attackDamage, owner);
                 Debug.Log("Dmg dealt: " + dmgDealt);
                 Destroy(gameObject);
             }
