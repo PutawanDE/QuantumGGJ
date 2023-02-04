@@ -249,9 +249,9 @@ MonoBehaviour:
   walkSpeed: 2
   jumpForce: 5
   attackRange: 1
-  attackDamage: 1
-  hp: 100
-  maxHp: 100
+  attackDamage: 10
+  hp: 150
+  maxHp: 150
   crown: {fileID: 1108787902}
   raycastOffset: 0.6
   arrow: {fileID: 0}

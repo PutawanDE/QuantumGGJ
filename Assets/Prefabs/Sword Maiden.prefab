@@ -249,7 +249,7 @@ MonoBehaviour:
   walkSpeed: 2
   jumpForce: 3
   attackRange: 1
-  attackDamage: 20
+  attackDamage: 30
   hp: 200
   maxHp: 200
   crown: {fileID: 1108787902}

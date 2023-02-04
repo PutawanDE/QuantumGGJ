@@ -162,7 +162,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1427843280, guid: 7b2981d2cd838834095ffa4bccd76963, type: 3}
+  m_Sprite: {fileID: 2054774473, guid: 8703abdd315ed9c4c9d4c6b445b33e50, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -246,11 +246,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   groundCheckRadius: 0.5
-  walkSpeed: 2
-  jumpForce: 5
+  walkSpeed: 2.5
+  jumpForce: 3
   attackRange: 3
-  attackDamage: 15
-  hp: 100
-  maxHp: 100
+  attackDamage: 20
+  hp: 250
+  maxHp: 250
   crown: {fileID: 1108787902}
   raycastOffset: 0.6
