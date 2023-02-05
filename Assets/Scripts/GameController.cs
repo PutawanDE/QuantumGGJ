@@ -25,8 +25,10 @@ public class GameController : MonoBehaviour
     public GameObject player;
     public GameObject enemy;
 
+    private int currentScore;
     private void Awake()
     {
+        this.currentScore = 0;
         enemy = Instantiate(RandomCharacter(), enemySpawnPoint, Quaternion.identity);
         enemy.GetComponent<Character>().Initialize("Enemy");
         enemy.GetComponent<SpriteRenderer>().color = enemyColor;
@@ -56,7 +58,7 @@ public class GameController : MonoBehaviour
 
     public void NextRound()
     {
-        scoreboard.CurrentScore += 10;
+        currentScore += 10;
         enemy = player;
         enemy.GetComponent<Character>().Initialize("Enemy");
         enemy.GetComponent<SpriteRenderer>().color = enemyColor;
@@ -83,7 +85,8 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
-        scoreboard.findMaxScore(scoreboard.CurrentScore);
+        scoreboard.findMaxScore(currentScore);
+        scoreboard.CurrentScore = currentScore;
         Debug.Log("IN?");
         SceneManager.LoadScene("GameOverScence");
     }

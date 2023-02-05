@@ -16,7 +16,7 @@ public class Scoreboard : ScriptableObject
 
     public string getCurrentScore()
     {
-        return this.MaxScore.ToString();
+        return this.CurrentScore.ToString();
     }
 
     public string getHighScore()
