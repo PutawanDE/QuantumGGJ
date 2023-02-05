@@ -172,10 +172,13 @@ public class Character : MonoBehaviour
         if (bloodSprout != null)
             Instantiate(bloodSprout, transform);
 
+        animator.SetTrigger("Hurt");
+
         hp -= damage;
         animator.SetTrigger("Hurt");
         if (hp <= 0 && !isDead)
         {
+            animator.SetTrigger("Dead");
             Die(attacker);
             return hp;
         }
@@ -208,7 +211,7 @@ public class Character : MonoBehaviour
 
     public virtual void Move(float horizontalInput)
     {
-        if (isAttacking) return;
+        if (isAttacking || animator.GetCurrentAnimatorStateInfo(0).IsName("Hurt")) return;
 
         rb.velocity = new Vector2(horizontalInput * walkSpeed, rb.velocity.y);
         if (horizontalInput < 0f)

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-
+using Unity.VisualScripting;
 
 public class GameController : MonoBehaviour
 {
@@ -17,6 +17,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject bloodSprout;
     [SerializeField] private GameObject dropSmoke;
 
+    [Header("Enemy Color")]
+    [SerializeField] private Color enemyColor;
+
     public GameObject player;
     public GameObject enemy;
 
@@ -24,9 +27,15 @@ public class GameController : MonoBehaviour
     {
         enemy = Instantiate(RandomCharacter(), enemySpawnPoint, Quaternion.identity);
         enemy.GetComponent<Character>().Initialize("Enemy");
+        enemy.GetComponent<SpriteRenderer>().color = enemyColor;
+
+        enemy.name = enemy.name.Replace("(Clone)", "");
 
         player = Instantiate(RandomCharacter(), playerSpawnPoint, Quaternion.identity);
         player.GetComponent<Character>().Initialize("Player");
+
+        player.name = player.name.Replace("(Clone)", "");
+
         cam.Follow = player.transform;
 
         if (bloodSprout != null)
@@ -48,9 +57,12 @@ public class GameController : MonoBehaviour
         scoreboard.CurrentScore += 10;
         enemy = player;
         enemy.GetComponent<Character>().Initialize("Enemy");
+        enemy.GetComponent<SpriteRenderer>().color = enemyColor;
 
         player = Instantiate(RandomCharacter(), playerSpawnPoint, Quaternion.identity);
         player.GetComponent<Character>().Initialize("Player");
+
+        player.name = player.name.Replace("(Clone)", "");
 
         cam.Follow = player.transform;
 
