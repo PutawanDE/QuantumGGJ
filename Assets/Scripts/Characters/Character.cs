@@ -173,6 +173,7 @@ public class Character : MonoBehaviour
             Instantiate(bloodSprout, transform);
 
         hp -= damage;
+        animator.SetTrigger("Hurt");
         if (hp <= 0 && !isDead)
         {
             Die(attacker);
@@ -184,7 +185,8 @@ public class Character : MonoBehaviour
     public virtual void Die(Character attacker)
     {
         isDead = true;
-        animator.SetBool("Dead", true);
+        animator.SetTrigger("Dead");
+        animator.SetBool("IsDead", true);
         
         if (gameObject.tag == "Player")
         {
