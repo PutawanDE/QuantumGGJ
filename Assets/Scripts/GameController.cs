@@ -28,13 +28,11 @@ public class GameController : MonoBehaviour
     public GameObject player;
     public GameObject enemy;
 
-    private int currentScore;
     private bool isCutscene = false;
     private int round;
 
     private void Awake()
     {
-        this.currentScore = 0;
         enemy = Instantiate(RandomCharacter(), enemySpawnPoint, Quaternion.identity);
         enemy.GetComponent<Character>().Initialize("Enemy");
         enemy.GetComponent<SpriteRenderer>().color = enemyColor;
@@ -121,8 +119,7 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
-        scoreboard.findMaxScore(currentScore);
-        scoreboard.CurrentScore = currentScore;
+        scoreboard.findMaxScore(scoreboard.CurrentScore);
         Debug.Log("IN?");
         SceneManager.LoadScene("GameOverScence");
     }
