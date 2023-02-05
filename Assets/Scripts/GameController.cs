@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
+
 
 public class GameController : MonoBehaviour
 {
@@ -82,6 +84,8 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         scoreboard.findMaxScore(scoreboard.CurrentScore);
+        Debug.Log("IN?");
+        SceneManager.LoadScene("GameOverScence");
     }
 
     private GameObject RandomCharacter()
