@@ -36,6 +36,8 @@ public class Character : MonoBehaviour
 
     private bool isAttacking = false;
     private bool onGround = true;
+    private bool isDead = false;
+    
 
     private void Start()
     {
@@ -171,7 +173,7 @@ public class Character : MonoBehaviour
             Instantiate(bloodSprout, transform);
 
         hp -= damage;
-        if (hp <= 0)
+        if (hp <= 0 && !isDead)
         {
             Die(attacker);
             return hp;
@@ -181,16 +183,25 @@ public class Character : MonoBehaviour
 
     public virtual void Die(Character attacker)
     {
+        isDead = true;
+        animator.SetBool("Dead", true);
+        
         if (gameObject.tag == "Player")
         {
+            GetComponent<PlayerController>().enabled = false;
             gameController.GameOver();
         }
         else if (gameObject.tag == "Enemy")
         {
+            crown.SetActive(false);
+            GetComponent<EnemyController>().enabled = false;
             gameController.NextRound();
         }
-
-        Destroy(this.gameObject);
+        CapsuleCollider2D cap = GetComponent<CapsuleCollider2D>();
+        cap.offset = new Vector2(0f, -0.06f);
+        cap.size = new Vector2(0.01f, 0.01f);
+        this.enabled = false;
+        //Destroy(this.gameObject);
     }
 
     public virtual void Move(float horizontalInput)

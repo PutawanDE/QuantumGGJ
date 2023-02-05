@@ -35,7 +35,6 @@ public class EnemyController : MonoBehaviour
     private void MeleeBot() {
         const float attackRange = 0.2f;
         distanceToTarget = Vector2.Distance(target.position, transform.position);
-        Debug.Log(currState);
     
         switch (currState)
         {
@@ -93,7 +92,6 @@ public class EnemyController : MonoBehaviour
     private void RangerBot() {
         const float attackRange = 2f;
         distanceToTarget = Vector2.Distance(target.position, transform.position);
-        Debug.Log(currState);
     
         Vector2 direction = (Vector2) target.position - (Vector2) transform.position;
 
