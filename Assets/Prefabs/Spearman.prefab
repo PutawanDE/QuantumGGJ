@@ -249,9 +249,9 @@ MonoBehaviour:
   baseAttackDamage: 25
   baseMaxHp: 200
   baseWalkSpeed: 2.5
-  attackRange: 2
+  attackRange: 0.8
   walkSpeed: 2.5
-  jumpForce: 3
+  jumpForce: 1
   attackDamage: 25
   hp: 200
   maxHp: 200

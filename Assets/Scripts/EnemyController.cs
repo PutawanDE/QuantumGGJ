@@ -82,7 +82,7 @@ public class EnemyController : MonoBehaviour
                 }
 
                 Vector2 direction = (Vector2) target.position - (Vector2) transform.position;
-                character.Move(Mathf.Clamp(-direction.x, -0.3f, 0.3f));
+                character.Move(Mathf.Clamp(-direction.x, -1f, 1f));
                 counter += 1;
                 break;
             }
