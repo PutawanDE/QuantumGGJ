@@ -33,6 +33,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
+        scoreboard.CurrentScore = 0;
         enemy = Instantiate(RandomCharacter(), enemySpawnPoint, Quaternion.identity);
         enemy.GetComponent<Character>().Initialize("Enemy");
         enemy.GetComponent<SpriteRenderer>().color = enemyColor;
