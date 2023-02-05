@@ -105,6 +105,7 @@ public class GameController : MonoBehaviour
 
     void ShowNarration(string text) 
     {
+        textUI.transform.parent.gameObject.SetActive(true);
         textUI.text = text + " Press F to continue...";
         isCutscene = true;
         Time.timeScale = 0;
@@ -112,6 +113,7 @@ public class GameController : MonoBehaviour
 
     void CloseNarration()
     {
+        textUI.transform.parent.gameObject.SetActive(false);
         textUI.text = "";
         isCutscene = false;
         Time.timeScale = 1;
