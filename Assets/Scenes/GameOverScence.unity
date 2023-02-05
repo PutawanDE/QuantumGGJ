@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 1323278214}
   - component: {fileID: 1323278213}
   m_Layer: 5
-  m_Name: StartGame (1)
+  m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1293,7 +1293,7 @@ GameObject:
   - component: {fileID: 1528135450}
   - component: {fileID: 1528135449}
   m_Layer: 5
-  m_Name: StartGame
+  m_Name: PlayAgain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
