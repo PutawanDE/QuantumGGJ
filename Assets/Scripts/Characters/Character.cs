@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Character : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class Character : MonoBehaviour
     [SerializeField] protected float maxHp;
     [SerializeField] protected GameObject crown;
     [SerializeField] protected int deathCount = 0;
+
+    public static event Action OnHurt;
 
     [SerializeField] protected float raycastOffset;
 
@@ -171,6 +174,8 @@ public class Character : MonoBehaviour
     {
         if (bloodSprout != null)
             Instantiate(bloodSprout, transform);
+
+        OnHurt?.Invoke();
 
         animator.SetTrigger("Hurt");
 
