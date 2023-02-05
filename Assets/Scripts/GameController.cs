@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class GameController : MonoBehaviour
@@ -14,6 +15,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera cam;
     
     [SerializeField] private Scoreboard scoreboard;
+    [SerializeField] private string[] narrations;
+    [SerializeField] private TextMeshProUGUI textUI;
 
     [Header("Character FX Prefab")]
     [SerializeField] private GameObject bloodSprout;
@@ -26,6 +29,9 @@ public class GameController : MonoBehaviour
     public GameObject enemy;
 
     private int currentScore;
+    private bool isCutscene = false;
+    private int round;
+
     private void Awake()
     {
         this.currentScore = 0;
@@ -54,14 +60,19 @@ public class GameController : MonoBehaviour
             player.GetComponent<Character>().dropSmoke = dropSmoke;
         }
 
+        ShowNarration(narrations[0]);
     }
 
     public void NextRound()
     {
-        currentScore += 10;
+        scoreboard.CurrentScore += 10;
+        round++;
+
         enemy = player;
         enemy.GetComponent<Character>().Initialize("Enemy");
         enemy.GetComponent<SpriteRenderer>().color = enemyColor;
+
+        ShowNarration(narrations[round % narrations.Length]);
 
         player = Instantiate(RandomCharacter(), playerSpawnPoint, Quaternion.identity);
         player.GetComponent<Character>().Initialize("Player");
@@ -81,6 +92,31 @@ public class GameController : MonoBehaviour
             enemy.GetComponent<Character>().dropSmoke = dropSmoke;
             player.GetComponent<Character>().dropSmoke = dropSmoke;
         }
+    }
+
+    void Update()
+    {
+        if (isCutscene)
+        {
+            if (Input.GetKey(KeyCode.F))
+            {
+                CloseNarration();
+            }
+        }
+    }
+
+    void ShowNarration(string text) 
+    {
+        textUI.text = text + " Press F to continue...";
+        isCutscene = true;
+        Time.timeScale = 0;
+    }
+
+    void CloseNarration()
+    {
+        textUI.text = "";
+        isCutscene = false;
+        Time.timeScale = 1;
     }
 
     public void GameOver()

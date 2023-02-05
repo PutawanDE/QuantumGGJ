@@ -257,6 +257,6 @@ MonoBehaviour:
   maxHp: 200
   crown: {fileID: 1108787902}
   deathCount: 0
-  raycastOffset: 0.6
+  raycastOffset: 0.2
   bloodSprout: {fileID: 0}
   dropSmoke: {fileID: 0}
