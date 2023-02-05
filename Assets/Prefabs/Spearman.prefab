@@ -249,14 +249,14 @@ MonoBehaviour:
   baseAttackDamage: 25
   baseMaxHp: 200
   baseWalkSpeed: 2.5
-  attackRange: 2
+  attackRange: 0.8
   walkSpeed: 2.5
-  jumpForce: 3
+  jumpForce: 1
   attackDamage: 25
   hp: 200
   maxHp: 200
   crown: {fileID: 1108787902}
   deathCount: 0
-  raycastOffset: 0.6
+  raycastOffset: 0.2
   bloodSprout: {fileID: 0}
   dropSmoke: {fileID: 0}

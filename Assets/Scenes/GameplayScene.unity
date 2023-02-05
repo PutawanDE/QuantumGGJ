@@ -18855,6 +18855,35 @@ MonoBehaviour:
   enemySpawnPoint: {x: -2, y: 0}
   cam: {fileID: 738365029}
   scoreboard: {fileID: 11400000, guid: 1cf9b2f963fc99a4ab70803f58716790, type: 2}
+  narrations:
+  - Once upon a time, in a faraway kingdom, there was an ancient ritual that promised
+    immense power to whoever wore the Crown. To claim the Crown, one had to defeat
+    its wearer, and in return receive strength and eternal happiness.
+  - Congratulations, warriors. But not for long, a new challenger had arisen, seeking
+    to defeat the current wearer of the Crown and claim its power for themselves.
+  - The new challenger successfully claimed it. The previous one perished. The Crown
+    had a new wearer, so brave, so strong. But not for long, another challenger had
+    come.
+  - Congratulations. But another brave one came.
+  - Yet, another eager soul wanted to claim its power.
+  - And another...
+  - 'Several ancient rituals were performed through-out the ancient time. Changes
+    of the wearer came often. So many people seeked strength, power, and eternal
+    happiness. Did they really find it? '
+  - ' Its power as the legend said, was tempting for men. So many dead, so many despair.
+    Was the Crown a blessing, or a curse?'
+  - Power corrupts the purest of soul. In modern time, powerful weapon is a curse,
+    not an eternal happiness.
+  - As the Crown was passed down generations by generations, its power had strengthen.
+    It did not shine bright as before. The challengers came from a few families.
+    They sought revenge for their ancestors.
+  - '"The desire for power is the root of all wars, and the thirst for revenge is
+    the foundation of all weapons." '
+  - One might think that strength and power would make them happy. But the children
+    of those few families did not seem so happy.
+  - 'The new wearer were more powerful, of course. '
+  - Are you enjoying this? May be in those time, this was entertain to watch too.
+  textUI: {fileID: 473578116}
   bloodSprout: {fileID: 194062, guid: d12b4992d8a49fd4c8dd999f6c4197e5, type: 3}
   dropSmoke: {fileID: 101130, guid: 767f6a796de90554db33ec9069ce37c5, type: 3}
   enemyColor: {r: 1, g: 0.25882354, b: 0.25882354, a: 1}
@@ -19079,6 +19108,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468846961}
   m_CullTransparentMesh: 1
+--- !u!224 &473578115 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+  m_PrefabInstance: {fileID: 8226508791781377166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &473578116 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8226508792254955018, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+  m_PrefabInstance: {fileID: 8226508791781377166}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &488179340
 GameObject:
   m_ObjectHideFlags: 0
@@ -33965,6 +34010,7 @@ RectTransform:
   m_Children:
   - {fileID: 1835441017}
   - {fileID: 1312993852}
+  - {fileID: 473578115}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -99710,3 +99756,136 @@ RectTransform:
   m_AnchoredPosition: {x: 3.0999756, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &8226508791781377166
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 917877594}
+    m_Modifications:
+    - target: {fileID: 8226508792254955018, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955018, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955018, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955018, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.93637794
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955018, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955018, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_lineSpacing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955018, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955018, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955018, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278251519
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955020, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_Name
+      value: Narration
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 797.9675
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 297.7867
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0000038146973
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226508792254955021, guid: bed7bcd51f4f128409782f2026039629, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bed7bcd51f4f128409782f2026039629, type: 3}

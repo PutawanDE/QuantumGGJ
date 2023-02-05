@@ -22,6 +22,9 @@ public class Arrow : MonoBehaviour
     private void Update()
     {
         transform.Translate(direction * Time.deltaTime * speed);
+        if (direction.x < 0) {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
