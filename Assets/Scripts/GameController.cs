@@ -13,9 +13,10 @@ public class GameController : MonoBehaviour
     
     [SerializeField] private Scoreboard scoreboard;
 
-    [Header("BloodSprout FX Prefab")]
+    [Header("Character FX Prefab")]
     [SerializeField] private GameObject bloodSprout;
-    
+    [SerializeField] private GameObject dropSmoke;
+
     public GameObject player;
     public GameObject enemy;
 
@@ -32,6 +33,12 @@ public class GameController : MonoBehaviour
         {
             enemy.GetComponent<Character>().bloodSprout = bloodSprout;
             player.GetComponent<Character>().bloodSprout = bloodSprout;
+        }
+
+        if (dropSmoke != null)
+        {
+            enemy.GetComponent<Character>().dropSmoke = dropSmoke;
+            player.GetComponent<Character>().dropSmoke = dropSmoke;
         }
 
     }
@@ -51,6 +58,12 @@ public class GameController : MonoBehaviour
         {
             enemy.GetComponent<Character>().bloodSprout = bloodSprout;
             player.GetComponent<Character>().bloodSprout = bloodSprout;
+        }
+
+        if (dropSmoke != null)
+        {
+            enemy.GetComponent<Character>().dropSmoke = dropSmoke;
+            player.GetComponent<Character>().dropSmoke = dropSmoke;
         }
     }
 

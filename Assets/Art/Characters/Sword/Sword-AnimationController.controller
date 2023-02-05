@@ -220,7 +220,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sword-JumpLanded
+  m_Name: Landed
   m_Speed: 4
   m_CycleOffset: 0
   m_Transitions:

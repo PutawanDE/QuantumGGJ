@@ -5071,6 +5071,7 @@ MonoBehaviour:
   deathCount: 0
   raycastOffset: 0
   bloodSprout: {fileID: 0}
+  dropSmoke: {fileID: 0}
   arrow: {fileID: 8015875772121148621, guid: 49bf900b5ca149b4993e029760fc238a, type: 3}
   arrowSpeed: 2
 --- !u!70 &80804622
@@ -18854,6 +18855,7 @@ MonoBehaviour:
   cam: {fileID: 738365029}
   scoreboard: {fileID: 11400000, guid: 1cf9b2f963fc99a4ab70803f58716790, type: 2}
   bloodSprout: {fileID: 194062, guid: d12b4992d8a49fd4c8dd999f6c4197e5, type: 3}
+  dropSmoke: {fileID: 101130, guid: 767f6a796de90554db33ec9069ce37c5, type: 3}
   player: {fileID: 7849633476925129770, guid: 8a4dd89ab3d07a2438e8e6d40a7bb44e, type: 3}
   enemy: {fileID: 7509233037982926612, guid: 4d1a0f644a098d343a5407bfe390c070, type: 3}
 --- !u!4 &337142335

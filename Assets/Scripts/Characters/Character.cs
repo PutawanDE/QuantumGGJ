@@ -25,8 +25,9 @@ public class Character : MonoBehaviour
 
     [SerializeField] protected float raycastOffset;
 
-    [Header("Blood Sprout Prefab")]
+    [Header("FX Prefab")]
     public GameObject bloodSprout;
+    public GameObject dropSmoke;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -256,6 +257,13 @@ public class Character : MonoBehaviour
     {
         facingLeft = false;
         transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+            if (dropSmoke != null)
+                Instantiate(dropSmoke, transform.position + new Vector3(0, -0.25f, 0), Quaternion.identity);
     }
 
 }

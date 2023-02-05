@@ -262,7 +262,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ranger-LandEdited
+  m_Name: Landed
   m_Speed: 4
   m_CycleOffset: 0
   m_Transitions:
@@ -535,7 +535,7 @@ AnimatorStateMachine:
     m_Position: {x: 470, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3312402800630163861}
-    m_Position: {x: 730, y: 20, z: 0}
+    m_Position: {x: 800, y: -90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7908612651119053796}
     m_Position: {x: 350, y: -210, z: 0}
